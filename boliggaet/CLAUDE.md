@@ -43,6 +43,17 @@ test/
 - Full null safety; avoid `!` unless it is clearly safe.
 - Code, identifiers and comments in English. User-facing UI text in Danish.
 
+## Design principles
+Apply SOLID, DRY, KISS and YAGNI pragmatically. When they pull in different directions, choose the simpler code.
+- **Single responsibility**: views render, view models hold screen state and actions, repositories do data access. Put non-trivial validation or formatting logic in its own class or function (in the feature, or `core/` if shared), never in widgets.
+- **Open/closed**: add behaviour by adding a new implementation or class rather than growing `if`/`switch` chains on type in existing code.
+- **Liskov substitution**: every implementation must honour its interface's contract: accept the same inputs, return the same kind of result, throw no new kinds of exceptions. No `UnimplementedError` stubs.
+- **Interface segregation**: keep repository interfaces small and feature-specific. Split one when callers only use part of it.
+- **Dependency inversion**: depend on abstractions provided through Riverpod (`ref.watch` / `ref.read`), never construct dependencies inside view models or widgets. Repository interfaces are worth it even with one real implementation, because the test fake is the second.
+- **DRY**: extract a shared widget, function or class when the same logic appears the third time, not before. Shared code goes in `core/`. Prefer composition (small widgets and classes) over mixins.
+- **KISS**: use Flutter's built-in widgets and plain Dart before custom solutions. Clear names over explanatory comments. Small widgets and short methods.
+- **YAGNI**: build only what the current task needs. No speculative parameters, configuration options, base classes or "just in case" abstractions, and no optimisation without a measured problem.
+
 ## Testing
 - Write unit tests for new ViewModel and repository logic.
 - In tests, override repository providers with fakes via `ProviderContainer(overrides: [...])` or `ProviderScope(overrides: [...])`.
