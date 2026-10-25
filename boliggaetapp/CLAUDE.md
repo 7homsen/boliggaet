@@ -1,6 +1,8 @@
 # Boliggaet – instructions for Claude
 
 ## Project
+- Boliggaet is a game where the user guesses the price of current Danish property listings from their images, floor plans, statistics and location, over five rounds, plus a mode for playing with a listing the user is physically close to. See `docs/implementation-spec.md` for details.
+- Product rule: a listing's price must never be shown or hinted at while the user is guessing, in the UI, in text, or in data passed to the views. It is revealed only after the user has submitted their guess. Points are not shown between rounds, only after the final round. The scoring formula is in `docs/implementation-spec.md`.
 - Flutter app (Dart SDK ^3.13), targets Android, iOS and web
 - Architecture: MVVM with Riverpod (`flutter_riverpod`)
 - Lints: `flutter_lints` via `analysis_options.yaml`

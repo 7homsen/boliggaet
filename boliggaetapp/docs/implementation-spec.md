@@ -4,7 +4,22 @@ Overview of the app as it is currently built. Updated with every change that add
 
 ## Purpose
 
-Boliggaet is a Flutter app for Android, iOS and web. Its purpose and audience are not described yet.
+Boliggaet is a price-guessing game about real estate, built with Flutter for Android, iOS and web. It is fed data about current property listings in Denmark.
+
+- **Game (five rounds):** each round shows one listing with all its images, floor plans, statistics and location, but never its price. The user guesses the price, then only the real price is revealed before the next round. The points are not shown between rounds: after the fifth round the user sees their points per round and their final score.
+- **Nearby listing mode:** when the user is physically close to a listing, they can play the game with that specific listing.
+
+The price must never be shown or hinted at while the user is guessing.
+
+**Scoring:** each round gives 0–1000 points based on how far the guess is from the real price, relative to the price and the same for guessing too high or too low. An exact guess gives 1000, and the points fall evenly to 0 at double or half the price:
+
+```
+points = round(1000 × max(0, 1 − |ln(guess / price)| / ln 2))
+```
+
+For example, 10% off gives about 850–860 points, ×1.25 or ×0.8 gives about 680, and ×1.5 or ×0.67 gives about 415. The final score is the sum of the five rounds, out of 5000.
+
+Neither mode is built yet. The start page's buttons are the intended entry points: "Nyt Spil" for the five-round game and "Jeg ser en bolig" for the nearby listing mode.
 
 ## Pages
 
