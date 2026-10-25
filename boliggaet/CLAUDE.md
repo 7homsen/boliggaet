@@ -1,7 +1,7 @@
 # Boliggaet – instructions for Claude
 
 ## Project
-- Flutter app (Dart SDK ^3.13), targets Android and iOS
+- Flutter app (Dart SDK ^3.13), targets Android, iOS and web
 - Architecture: MVVM with Riverpod (`flutter_riverpod`)
 - Lints: `flutter_lints` via `analysis_options.yaml`
 
@@ -42,6 +42,8 @@ test/
 - Keep widgets small; extract sub-widgets into their own classes rather than helper methods returning widgets.
 - Full null safety; avoid `!` unless it is clearly safe.
 - Code, identifiers and comments in English. User-facing UI text in Danish.
+- Code in `lib/` must run on Android, iOS and web: no `dart:io` or other platform-only APIs in shared code. Before proposing a new package, check that it supports all three platforms.
+- Layouts must work from phone to desktop browser widths.
 
 ## Design principles
 Apply SOLID, DRY, KISS and YAGNI pragmatically. When they pull in different directions, choose the simpler code.

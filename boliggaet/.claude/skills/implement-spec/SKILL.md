@@ -78,7 +78,7 @@ log:
    git reset -q
    ```
    Features live in separate folders, so merges shouldn't conflict. If one does, or git refuses because of local changes, stop and ask the user. Keep the branches; list them in the final report instead of deleting them.
-4. Apply the "Shared changes" from `contracts.md` yourself (routes in `main.dart`, `core/` widgets, etc.). If native changes are listed, spawn `platform-engineer` for them.
+4. Apply the "Shared changes" from `contracts.md` yourself (routes in `main.dart`, `core/` widgets, etc.). If platform changes (`android/`, `ios/` or `web/`) are listed, spawn `platform-engineer` for them.
 5. Run `flutter analyze` and `flutter test`. Fix failures caused by your merge or shared changes (imports, routes, `main.dart`, `core/`) now, and re-run until those are clean. Failures inside a feature's own code or tests are left for the reviewers and triage.
 
 ## Phase 5: Review (fresh context, in parallel)

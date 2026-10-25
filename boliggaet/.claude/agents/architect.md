@@ -35,7 +35,10 @@ One per screen: `AsyncNotifier<XState>` when the screen loads data, otherwise `N
 Screen (`ConsumerWidget`, or `ConsumerStatefulWidget` only when it needs controllers or animations; say which and why) → main sub-widgets (private classes), which UX shared components they use.
 
 ### Routes
-How each screen is reached (route name/path or `Navigator.push`), arguments, and result values.
+How each screen is reached (route name/path or `Navigator.push`), arguments, and result values. For web: the URL of each screen that needs one, and how state is restored after a browser refresh.
+
+### Responsive layout
+How the widget tree adapts per window size class from the design (e.g. `LayoutBuilder` or `MediaQuery.sizeOf` breakpoints), kept in the view, not the view model.
 
 ### Test seams
 Which providers tests override and with what fakes, so every UX state can be forced in a widget test.
@@ -49,7 +52,9 @@ Changes outside a single feature folder (main.dart, routing, `core/` widgets, th
 
 ## Rules
 - Riverpod only, providers written by hand. No Bloc, `provider` package, `ChangeNotifier`, GetX or `@riverpod` code generation.
-- Use `Navigator` / `MaterialPageRoute` unless a router package is already in `pubspec.yaml`. If you think a new package is needed (router, HTTP, storage), don't add it to the contracts: list it under Pushback with the reason, so the orchestrator can ask the user.
+- Everything in `lib/` must run on Android, iOS and web: no `dart:io` or platform-only APIs in shared code. If a feature truly needs platform-specific code, isolate it behind a repository interface with conditional imports, and say so.
+- Use `Navigator` / `MaterialPageRoute` unless a router package is already in `pubspec.yaml`. `Navigator` gives no meaningful web URLs, so if the design needs URLs, deep links or browser back/refresh behaviour it can't deliver, push back and propose a router.
+- If you think a new package is needed (router, HTTP, storage), don't add it to the contracts: list it under Pushback with the reason and confirmed Android, iOS and web support, so the orchestrator can ask the user. A package without web support needs a stated alternative for web.
 - Keep features independent: each feature's files live in its own folder, and anything shared is listed under Shared changes.
 - Contracts must be precise enough that the implementer and test writer, who never talk to each other, produce code and tests that fit.
 - Apply YAGNI: only the providers, methods and parameters the design needs.

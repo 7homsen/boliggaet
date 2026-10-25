@@ -19,6 +19,7 @@ For every screen and every state in the inventory, try to make it go wrong:
 - Bad input: empty, very long, whitespace-only, emoji/æøå, invalid formats, boundary numbers.
 - Repository failures at each call, slow responses, empty and partial data.
 - Accessibility and layout: large text scale, small screens, missing semantics, overflow.
+- Web and wide screens: resizing across breakpoints mid-flow, very wide windows, keyboard-only use (Tab order, Enter/Escape, focus traps), browser back/forward and refresh mid-flow, `dart:io` or other platform-only APIs that break the web build.
 - Violations of `CLAUDE.md` that cause real defects (business logic in widgets, mutation of state, unsafe `!`).
 
 ## Evidence

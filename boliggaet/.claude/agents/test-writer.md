@@ -20,6 +20,7 @@ Only files under `test/features/<feature>/`, mirroring `lib/`:
 - Unit tests for every view model and repository behaviour named in the contracts.
 - At least one widget test per screen state in the state inventory (loading, empty, error, partial, offline, success, unless marked n/a), asserting on the Danish copy and available actions from `design.md`.
 - A test for each acceptance criterion. Name tests after it, e.g. `test('AC-F1-2 shows empty message when there are no listings', ...)`.
+- Where the design changes the layout per window size class, a widget test per size class (set `tester.view.physicalSize` and `devicePixelRatio`, and reset them with `addTearDown(tester.view.reset)`), asserting the layout differences the design names.
 - Force states by overriding repository providers with fakes via `ProviderContainer(overrides: [...])` or `ProviderScope(overrides: [...])`, as listed under test seams. For loading states, use a fake whose future never completes (a `Completer`).
 
 ## Rules
