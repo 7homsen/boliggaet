@@ -1,4 +1,4 @@
-import 'package:boliggaet/features/start/presentation/start_screen.dart';
+import 'package:boliggaetapp/features/start/presentation/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

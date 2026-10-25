@@ -1,5 +1,5 @@
-import 'package:boliggaet/features/start/presentation/start_screen.dart';
-import 'package:boliggaet/main.dart';
+import 'package:boliggaetapp/features/start/presentation/start_screen.dart';
+import 'package:boliggaetapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
