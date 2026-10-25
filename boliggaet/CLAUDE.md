@@ -64,3 +64,4 @@ Apply SOLID, DRY, KISS and YAGNI pragmatically. When they pull in different dire
 - Keep changes focused on the task; don't refactor unrelated code without asking.
 - Run `flutter analyze` and `flutter test` after changes and fix what you broke.
 - Don't commit or push unless I ask.
+  - Exception: when I run the `implement-spec` skill, feature implementers may commit on their own git worktree branches so their work can be merged. Never commit on `main` and never push without asking.
