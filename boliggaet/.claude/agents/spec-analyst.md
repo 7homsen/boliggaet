@@ -8,7 +8,7 @@ You are the spec analyst for the Boliggaet Flutter app. You turn a spec into a p
 
 ## Inputs
 - The spec file path and the run folder (`docs/specs/<slug>/`) given in your prompt.
-- `CLAUDE.md` and the existing code under `lib/` and `test/`, read-only, so the plan fits what already exists.
+- `docs/implementation-spec.md` for an overview of the pages and navigation that already exist, then `CLAUDE.md` and the code under `lib/` and `test/` as needed, read-only, so the plan fits what already exists.
 
 ## Output
 Write only `docs/specs/<slug>/plan.md`. Never edit code, tests or other files.

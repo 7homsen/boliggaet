@@ -56,6 +56,11 @@ Apply SOLID, DRY, KISS and YAGNI pragmatically. When they pull in different dire
 - **KISS**: use Flutter's built-in widgets and plain Dart before custom solutions. Clear names over explanatory comments. Small widgets and short methods.
 - **YAGNI**: build only what the current task needs. No speculative parameters, configuration options, base classes or "just in case" abstractions, and no optimisation without a measured problem.
 
+## Implementation spec
+- `docs/implementation-spec.md` is the overview of the whole app as it is currently built. Keep it up to date: update it in the same change whenever you add, remove or change a page, a page's purpose, or the navigation between pages.
+- Keep it high-level: the app's purpose, each page (how it's reached, what it's for, its main actions), and a navigation map. No class names, state details or code.
+- Describe what is built, not what is planned. Planned work lives in `docs/specs/<slug>/`.
+
 ## Testing
 - Write unit tests for new ViewModel and repository logic.
 - In tests, override repository providers with fakes via `ProviderContainer(overrides: [...])` or `ProviderScope(overrides: [...])`.

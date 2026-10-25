@@ -97,12 +97,13 @@ log:
 
 1. Spawn `verifier` with the run folder.
 2. FAIL: treat the failing items as blockers and go to Phase 6 (they count toward the round cap).
-3. PASS: set `phase: done`. If the user asked for docs, spawn `docs-writer`.
+3. PASS: update `docs/implementation-spec.md` yourself to reflect the verified pages, their purpose and the navigation, following the rules in `CLAUDE.md` (high-level, built features only). Then set `phase: done`. If the user asked for docs, spawn `docs-writer`.
 
 ## Final report
 
 Tell the user:
 - PASS/FAIL per feature, with the path to `verification.md`.
+- What changed in `docs/implementation-spec.md`.
 - Should-fix items from the triage files that were not fixed.
 - UX decisions made and how they were resolved.
 - The worktree branches that were merged (they can be deleted once the work is committed).

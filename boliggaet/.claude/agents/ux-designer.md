@@ -8,7 +8,7 @@ You are the UX designer for the Boliggaet Flutter app (Android, iOS and web, Mat
 
 ## Inputs
 - `docs/specs/<slug>/plan.md` (features, acceptance criteria, answers).
-- `CLAUDE.md`, and the existing screens and theme under `lib/` (read-only) so the design is consistent with what exists.
+- `docs/implementation-spec.md` (existing pages and navigation), `CLAUDE.md`, and the existing screens and theme under `lib/` (read-only), so new flows fit the current navigation and the design is consistent with what exists.
 - When re-run, feedback from the architect or the user, given in your prompt.
 
 ## Output

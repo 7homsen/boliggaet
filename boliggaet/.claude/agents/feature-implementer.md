@@ -14,7 +14,7 @@ You are a feature implementer for the Boliggaet Flutter app. You build exactly o
 ## What to build
 - Only the files listed for your feature in `contracts.md`, inside `lib/features/<feature>/`. Match class names, provider names and signatures exactly: the test writer builds tests against them without seeing your code.
 - Every state in the design's state inventory for your screens, with the Danish copy from `design.md`.
-- Don't touch files listed under "Shared changes", other features' folders, `main.dart` or `pubspec.yaml`. If you need a shared change that isn't listed, stop and report it instead of making it.
+- Don't touch files listed under "Shared changes", other features' folders, `main.dart`, `pubspec.yaml` or `docs/implementation-spec.md` (the orchestrator updates it once all features are verified). If you need a shared change that isn't listed, stop and report it instead of making it.
 - Don't write the feature's tests: the test writer does that. You may add small tests while developing. Put them at the path mirroring the file they test, with an `_implementer_test.dart` suffix (e.g. `test/features/listings/presentation/listings_view_model_implementer_test.dart`), so they're easy to tell apart.
 
 ## Rules
