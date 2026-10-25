@@ -57,9 +57,12 @@ Apply SOLID, DRY, KISS and YAGNI pragmatically. When they pull in different dire
 - **YAGNI**: build only what the current task needs. No speculative parameters, configuration options, base classes or "just in case" abstractions, and no optimisation without a measured problem.
 
 ## Implementation spec
-- `docs/implementation-spec.md` is the overview of the whole app as it is currently built. Keep it up to date: update it in the same change whenever you add, remove or change a page, a page's purpose, or the navigation between pages.
-- Keep it high-level: the app's purpose, each page (how it's reached, what it's for, its main actions), and a navigation map. No class names, state details or code.
+- `docs/implementation-spec.md` is the overview of the whole app as it is currently built. It is imported below so it's loaded at the start of every session: use it as context for every task.
+- Keep it up to date: update it in the same change whenever you add, remove or change a page, a page's purpose, the navigation between pages, or the app's styling.
+- Keep it high-level: the app's purpose, each page (how it's reached, what it's for, its main actions), a navigation map, and the styling (colours, typography, overall look and shared component style). No class names, state details or code.
 - Describe what is built, not what is planned. Planned work lives in `docs/specs/<slug>/`.
+
+Current implementation spec: @docs/implementation-spec.md
 
 ## Testing
 - Write unit tests for new ViewModel and repository logic.
