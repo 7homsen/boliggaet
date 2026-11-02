@@ -1,0 +1,61 @@
+[
+  {
+    "id": "apartment-1",
+    "url": "https://example.com/sample/apartment-1",
+    "property_type": "Ejerlejlighed",
+    "status": "active",
+    "lat": 55.6867,
+    "lng": 12.5701,
+    "images": ["https://example.com/a1.jpg", "https://example.com/a2.jpg"],
+    "floor_plans": ["https://example.com/plan.jpg"],
+    "energy_rating": "A2020",
+    "build_year": 2021,
+    "renovation_year": null,
+    "floors": 6,
+    "floor": -1,
+    "rooms": 2,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 61,
+    "listed_date": "2026-10-01",
+    "price": 2995000
+  },
+  {
+    "id": "house-1",
+    "url": "https://example.com/sample/house-1",
+    "property_type": "rækkehus",
+    "status": "contract_signed",
+    "lat": 56.1572,
+    "lng": 10.2107,
+    "images": ["https://example.com/h1.jpg"],
+    "floor_plans": [],
+    "floor": 2,
+    "price": 3295000
+  },
+  {
+    "id": "plot-1",
+    "url": "https://example.com/sample/plot-1",
+    "property_type": "grund",
+    "status": "active",
+    "lat": 56.1694,
+    "lng": 9.5486,
+    "images": [],
+    "floor_plans": [],
+    "price": 695000
+  },
+  {
+    "id": "broken-1",
+    "url": "https://example.com/sample/broken-1",
+    "property_type": "villa",
+    "status": "removed",
+    "lat": 55.0,
+    "lng": 10.0,
+    "images": [],
+    "floor_plans": [],
+    "price": 1000000
+  },
+  {
+    "id": "broken-2",
+    "property_type": "villa"
+  }
+]

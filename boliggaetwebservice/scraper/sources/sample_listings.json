@@ -1,0 +1,523 @@
+[
+  {
+    "id": "sample-01",
+    "url": "https://example.com/sample/01",
+    "property_type": "ejerlejlighed",
+    "status": "active",
+    "lat": 55.6867,
+    "lng": 12.5701,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+01+1",
+      "https://placehold.co/1200x800/png?text=Sample+01+2",
+      "https://placehold.co/1200x800/png?text=Sample+01+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+01"
+    ],
+    "energy_rating": "C",
+    "build_year": 1932,
+    "renovation_year": 2015,
+    "floors": 5,
+    "floor": 3,
+    "rooms": 3,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 82,
+    "listed_date": "2026-08-14",
+    "price": 3495000
+  },
+  {
+    "id": "sample-02",
+    "url": "https://example.com/sample/02",
+    "property_type": "andelsbolig",
+    "status": "active",
+    "lat": 55.6941,
+    "lng": 12.5465,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+02+1",
+      "https://placehold.co/1200x800/png?text=Sample+02+2",
+      "https://placehold.co/1200x800/png?text=Sample+02+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+02"
+    ],
+    "energy_rating": "D",
+    "build_year": 1905,
+    "renovation_year": null,
+    "floors": 6,
+    "floor": 0,
+    "rooms": 2,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 58,
+    "listed_date": "2026-09-02",
+    "price": 1150000
+  },
+  {
+    "id": "sample-03",
+    "url": "https://example.com/sample/03",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 55.7714,
+    "lng": 12.504,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+03+1",
+      "https://placehold.co/1200x800/png?text=Sample+03+2",
+      "https://placehold.co/1200x800/png?text=Sample+03+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+03"
+    ],
+    "energy_rating": "B",
+    "build_year": 1968,
+    "renovation_year": 2010,
+    "floors": 1,
+    "rooms": 6,
+    "bathrooms": 2,
+    "toilets": 2,
+    "square_meters": 168,
+    "listed_date": "2026-07-21",
+    "price": 8950000
+  },
+  {
+    "id": "sample-04",
+    "url": "https://example.com/sample/04",
+    "property_type": "ejerlejlighed",
+    "status": "active",
+    "lat": 56.1572,
+    "lng": 10.2107,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+04+1",
+      "https://placehold.co/1200x800/png?text=Sample+04+2",
+      "https://placehold.co/1200x800/png?text=Sample+04+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+04"
+    ],
+    "energy_rating": "A2015",
+    "build_year": 2016,
+    "renovation_year": null,
+    "floors": 8,
+    "floor": 5,
+    "rooms": 4,
+    "bathrooms": 2,
+    "toilets": 2,
+    "square_meters": 104,
+    "listed_date": "2026-10-01",
+    "price": 4795000
+  },
+  {
+    "id": "sample-05",
+    "url": "https://example.com/sample/05",
+    "property_type": "rækkehus",
+    "status": "active",
+    "lat": 56.118,
+    "lng": 10.155,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+05+1",
+      "https://placehold.co/1200x800/png?text=Sample+05+2",
+      "https://placehold.co/1200x800/png?text=Sample+05+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+05"
+    ],
+    "energy_rating": "C",
+    "build_year": 1979,
+    "renovation_year": 2008,
+    "floors": 2,
+    "rooms": 4,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 112,
+    "listed_date": "2026-06-30",
+    "price": 3295000
+  },
+  {
+    "id": "sample-06",
+    "url": "https://example.com/sample/06",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 55.3959,
+    "lng": 10.3883,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+06+1",
+      "https://placehold.co/1200x800/png?text=Sample+06+2",
+      "https://placehold.co/1200x800/png?text=Sample+06+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+06"
+    ],
+    "energy_rating": "D",
+    "build_year": 1952,
+    "renovation_year": 1998,
+    "floors": 1,
+    "rooms": 5,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 145,
+    "listed_date": "2026-08-28",
+    "price": 3650000
+  },
+  {
+    "id": "sample-07",
+    "url": "https://example.com/sample/07",
+    "property_type": "ejerlejlighed",
+    "status": "active",
+    "lat": 55.4038,
+    "lng": 10.4024,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+07+1",
+      "https://placehold.co/1200x800/png?text=Sample+07+2",
+      "https://placehold.co/1200x800/png?text=Sample+07+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+07"
+    ],
+    "energy_rating": "B",
+    "build_year": 1998,
+    "renovation_year": null,
+    "floors": 4,
+    "floor": -1,
+    "rooms": 2,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 64,
+    "listed_date": "2026-10-12",
+    "price": 1695000
+  },
+  {
+    "id": "sample-08",
+    "url": "https://example.com/sample/08",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 57.0488,
+    "lng": 9.9217,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+08+1",
+      "https://placehold.co/1200x800/png?text=Sample+08+2",
+      "https://placehold.co/1200x800/png?text=Sample+08+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+08"
+    ],
+    "energy_rating": "C",
+    "build_year": 1974,
+    "renovation_year": 2019,
+    "floors": 1,
+    "rooms": 5,
+    "bathrooms": 2,
+    "toilets": 2,
+    "square_meters": 152,
+    "listed_date": "2026-09-15",
+    "price": 2895000
+  },
+  {
+    "id": "sample-09",
+    "url": "https://example.com/sample/09",
+    "property_type": "ejerlejlighed",
+    "status": "active",
+    "lat": 57.0461,
+    "lng": 9.9187,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+09+1",
+      "https://placehold.co/1200x800/png?text=Sample+09+2",
+      "https://placehold.co/1200x800/png?text=Sample+09+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+09"
+    ],
+    "energy_rating": "E",
+    "build_year": 1910,
+    "renovation_year": 1987,
+    "floors": 4,
+    "floor": 2,
+    "rooms": 3,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 91,
+    "listed_date": "2026-07-03",
+    "price": 1395000
+  },
+  {
+    "id": "sample-10",
+    "url": "https://example.com/sample/10",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 55.4765,
+    "lng": 8.4594,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+10+1",
+      "https://placehold.co/1200x800/png?text=Sample+10+2",
+      "https://placehold.co/1200x800/png?text=Sample+10+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+10"
+    ],
+    "energy_rating": "E",
+    "build_year": 1938,
+    "renovation_year": null,
+    "floors": 2,
+    "rooms": 6,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 178,
+    "listed_date": "2026-05-19",
+    "price": 1995000
+  },
+  {
+    "id": "sample-11",
+    "url": "https://example.com/sample/11",
+    "property_type": "rækkehus",
+    "status": "active",
+    "lat": 55.6415,
+    "lng": 12.0803,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+11+1",
+      "https://placehold.co/1200x800/png?text=Sample+11+2",
+      "https://placehold.co/1200x800/png?text=Sample+11+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+11"
+    ],
+    "energy_rating": "A2010",
+    "build_year": 2011,
+    "renovation_year": null,
+    "floors": 2,
+    "rooms": 4,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 118,
+    "listed_date": "2026-09-25",
+    "price": 3995000
+  },
+  {
+    "id": "sample-12",
+    "url": "https://example.com/sample/12",
+    "property_type": "landejendom",
+    "status": "active",
+    "lat": 55.709,
+    "lng": 9.5357,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+12+1",
+      "https://placehold.co/1200x800/png?text=Sample+12+2",
+      "https://placehold.co/1200x800/png?text=Sample+12+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+12"
+    ],
+    "energy_rating": null,
+    "build_year": 1885,
+    "renovation_year": 1995,
+    "floors": 1,
+    "rooms": 7,
+    "bathrooms": 2,
+    "toilets": 3,
+    "square_meters": 240,
+    "listed_date": "2026-04-08",
+    "price": 4250000
+  },
+  {
+    "id": "sample-13",
+    "url": "https://example.com/sample/13",
+    "property_type": "fritidshus",
+    "status": "active",
+    "lat": 57.721,
+    "lng": 10.585,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+13+1",
+      "https://placehold.co/1200x800/png?text=Sample+13+2",
+      "https://placehold.co/1200x800/png?text=Sample+13+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+13"
+    ],
+    "energy_rating": "F",
+    "build_year": 1972,
+    "renovation_year": null,
+    "floors": 1,
+    "rooms": 3,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 64,
+    "listed_date": "2026-06-12",
+    "price": 2450000
+  },
+  {
+    "id": "sample-14",
+    "url": "https://example.com/sample/14",
+    "property_type": "fritidshus",
+    "status": "active",
+    "lat": 55.446,
+    "lng": 8.399,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+14+1",
+      "https://placehold.co/1200x800/png?text=Sample+14+2",
+      "https://placehold.co/1200x800/png?text=Sample+14+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+14"
+    ],
+    "energy_rating": null,
+    "build_year": 1965,
+    "renovation_year": 2012,
+    "floors": 1,
+    "rooms": 4,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 78,
+    "listed_date": "2026-08-01",
+    "price": 1795000
+  },
+  {
+    "id": "sample-15",
+    "url": "https://example.com/sample/15",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 55.1004,
+    "lng": 14.7062,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+15+1",
+      "https://placehold.co/1200x800/png?text=Sample+15+2",
+      "https://placehold.co/1200x800/png?text=Sample+15+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+15"
+    ],
+    "energy_rating": "D",
+    "build_year": 1925,
+    "renovation_year": 2001,
+    "floors": 2,
+    "rooms": 5,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 134,
+    "listed_date": "2026-09-09",
+    "price": 1650000
+  },
+  {
+    "id": "sample-16",
+    "url": "https://example.com/sample/16",
+    "property_type": "ejerlejlighed",
+    "status": "active",
+    "lat": 56.0361,
+    "lng": 12.6136,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+16+1",
+      "https://placehold.co/1200x800/png?text=Sample+16+2",
+      "https://placehold.co/1200x800/png?text=Sample+16+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+16"
+    ],
+    "energy_rating": "C",
+    "build_year": 1958,
+    "renovation_year": 2018,
+    "floors": 3,
+    "floor": 1,
+    "rooms": 3,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 76,
+    "listed_date": "2026-10-20",
+    "price": 2195000
+  },
+  {
+    "id": "sample-17",
+    "url": "https://example.com/sample/17",
+    "property_type": "villa",
+    "status": "active",
+    "lat": 56.451,
+    "lng": 9.402,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+17+1",
+      "https://placehold.co/1200x800/png?text=Sample+17+2",
+      "https://placehold.co/1200x800/png?text=Sample+17+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+17"
+    ],
+    "energy_rating": "C",
+    "build_year": 1963,
+    "renovation_year": null,
+    "floors": 1,
+    "rooms": 5,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 140,
+    "listed_date": "2026-07-30",
+    "price": 2350000
+  },
+  {
+    "id": "sample-18",
+    "url": "https://example.com/sample/18",
+    "property_type": "andelsbolig",
+    "status": "contract_signed",
+    "lat": 55.672,
+    "lng": 12.552,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+18+1",
+      "https://placehold.co/1200x800/png?text=Sample+18+2",
+      "https://placehold.co/1200x800/png?text=Sample+18+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+18"
+    ],
+    "energy_rating": "D",
+    "build_year": 1935,
+    "renovation_year": null,
+    "floors": 5,
+    "floor": 4,
+    "rooms": 2,
+    "bathrooms": 1,
+    "toilets": 1,
+    "square_meters": 55,
+    "listed_date": "2026-06-01",
+    "price": 950000
+  },
+  {
+    "id": "sample-19",
+    "url": "https://example.com/sample/19",
+    "property_type": "villa",
+    "status": "sold",
+    "lat": 55.4904,
+    "lng": 9.4722,
+    "images": [
+      "https://placehold.co/1200x800/png?text=Sample+19+1",
+      "https://placehold.co/1200x800/png?text=Sample+19+2",
+      "https://placehold.co/1200x800/png?text=Sample+19+3"
+    ],
+    "floor_plans": [
+      "https://placehold.co/1200x800/png?text=Plan+19"
+    ],
+    "energy_rating": "C",
+    "build_year": 1970,
+    "renovation_year": 2005,
+    "floors": 1,
+    "rooms": 5,
+    "bathrooms": 1,
+    "toilets": 2,
+    "square_meters": 150,
+    "listed_date": "2026-03-11",
+    "price": 3150000
+  },
+  {
+    "id": "sample-20",
+    "url": "https://example.com/sample/20",
+    "property_type": "grund",
+    "status": "active",
+    "lat": 56.1694,
+    "lng": 9.5486,
+    "images": [],
+    "floor_plans": [],
+    "energy_rating": null,
+    "build_year": null,
+    "renovation_year": null,
+    "floors": null,
+    "rooms": null,
+    "bathrooms": null,
+    "toilets": null,
+    "square_meters": null,
+    "listed_date": "2026-05-05",
+    "price": 695000
+  }
+]

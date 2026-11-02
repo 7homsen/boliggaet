@@ -1,0 +1,26 @@
+import asyncio
+
+from alembic import command
+from sqlalchemy import inspect
+from sqlalchemy.ext.asyncio import create_async_engine
+
+from tests.conftest import alembic_config
+
+
+async def _table_names(database_url: str) -> list[str]:
+    engine = create_async_engine(database_url)
+    try:
+        async with engine.connect() as connection:
+            return await connection.run_sync(lambda sync: inspect(sync).get_table_names())
+    finally:
+        await engine.dispose()
+
+
+def test_migrations_downgrade_and_upgrade_cleanly(test_database_url: str) -> None:
+    config = alembic_config(test_database_url)
+
+    command.downgrade(config, "base")
+    assert "listings" not in asyncio.run(_table_names(test_database_url))
+
+    command.upgrade(config, "head")
+    assert "listings" in asyncio.run(_table_names(test_database_url))
