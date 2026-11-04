@@ -3,7 +3,12 @@ from dataclasses import dataclass, replace
 from datetime import date, datetime
 
 from app.db.models import EnergyRating, ListingStatus, ListingType
-from app.repositories.listings import GameListing, ListingStats, NormalisedListing
+from app.repositories.listings import (
+    GameListing,
+    ListingRejectedError,
+    ListingStats,
+    NormalisedListing,
+)
 
 
 def make_stats(listing_type: ListingType = ListingType.APARTMENT) -> ListingStats:
@@ -27,13 +32,14 @@ def make_listing(
     status: ListingStatus = ListingStatus.ACTIVE,
     images: list[str] | None = None,
     source: str = "test",
+    lat: float = 55.6761,
 ) -> NormalisedListing:
     return NormalisedListing(
         source=source,
         source_listing_id=source_listing_id,
         source_url=f"https://example.com/{source_listing_id}",
         type=listing_type,
-        lat=55.6761,
+        lat=lat,
         lng=12.5683,
         images=["https://example.com/image.jpg"] if images is None else images,
         floor_plans=["https://example.com/plan.jpg"],
@@ -73,15 +79,26 @@ class StoredListing:
 
 
 class FakeScraperListingRepository:
-    def __init__(self) -> None:
+    def __init__(self, rejected_ids: set[str] | None = None) -> None:
         self.stored: dict[tuple[str, str], StoredListing] = {}
         self.commits = 0
+        self.rejected_ids = rejected_ids or set()
 
     async def upsert(self, listing: NormalisedListing, seen_at: datetime) -> bool:
+        if listing.source_listing_id in self.rejected_ids:
+            raise ListingRejectedError("rejected by the fake")
         key = (listing.source, listing.source_listing_id)
         is_new = key not in self.stored
         self.stored[key] = StoredListing(listing, listing.status, seen_at)
         return is_new
+
+    async def count_listed(self, source: str) -> int:
+        return sum(
+            1
+            for (stored_source, _), stored in self.stored.items()
+            if stored_source == source
+            and stored.status not in (ListingStatus.SOLD, ListingStatus.REMOVED)
+        )
 
     async def mark_removed_not_seen_since(self, source: str, cutoff: datetime) -> int:
         changed = 0

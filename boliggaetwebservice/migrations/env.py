@@ -33,14 +33,25 @@ def run_migrations_offline() -> None:
         context.run_migrations()
 
 
+def _include_name(name: str | None, type_: str, parent_names: object) -> bool:
+    # PostGIS keeps this table in the public schema; it isn't ours to migrate.
+    return not (type_ == "table" and name == "spatial_ref_sys")
+
+
 def _run_migrations(connection: Connection) -> None:
-    context.configure(connection=connection, target_metadata=target_metadata)
+    context.configure(
+        connection=connection, target_metadata=target_metadata, include_name=_include_name
+    )
     with context.begin_transaction():
         context.run_migrations()
 
 
 async def run_migrations_online() -> None:
-    engine = create_async_engine(_database_url())
+    # The PostGIS image puts its tiger and topology schemas on the search path; without
+    # this, autogenerate sees their tables and wants to drop them.
+    engine = create_async_engine(
+        _database_url(), connect_args={"server_settings": {"search_path": "public"}}
+    )
     async with engine.connect() as connection:
         await connection.run_sync(_run_migrations)
     await engine.dispose()

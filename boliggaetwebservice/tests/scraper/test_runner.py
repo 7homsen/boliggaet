@@ -65,6 +65,58 @@ async def test_run_all_continues_after_a_failing_source() -> None:
     assert ("test", "1") in repository.stored
 
 
+async def test_invalid_and_rejected_listings_are_counted_as_failed_and_skipped() -> None:
+    repository = FakeScraperListingRepository(rejected_ids={"rejected"})
+    source = StaticSource(
+        FetchResult(
+            [make_listing("ok"), make_listing("outside", lat=95.0), make_listing("rejected")],
+            failed=1,
+        )
+    )
+
+    summary = await run_source(source, repository, NOW)
+
+    assert (summary.new, summary.failed) == (1, 3)
+    assert set(repository.stored) == {("test", "ok")}
+    assert repository.commits == 1
+
+
+@pytest.mark.parametrize("fetched", [0, 1])
+async def test_removal_is_skipped_when_the_run_looks_partial(fetched: int) -> None:
+    repository = FakeScraperListingRepository()
+    for number in range(4):
+        await repository.upsert(make_listing(str(number)), seen_at=NOW - timedelta(days=3))
+    source = StaticSource(FetchResult([make_listing(str(n)) for n in range(fetched)]))
+
+    summary = await run_source(source, repository, NOW)
+
+    assert summary.removal_skipped is True
+    assert summary.deactivated == 0
+    assert await repository.count_listed("test") == 4
+
+
+async def test_removal_runs_when_at_least_half_is_stored() -> None:
+    repository = FakeScraperListingRepository()
+    for number in range(4):
+        await repository.upsert(make_listing(str(number)), seen_at=NOW - timedelta(days=3))
+    source = StaticSource(FetchResult([make_listing("0"), make_listing("1")]))
+
+    summary = await run_source(source, repository, NOW)
+
+    assert (summary.removal_skipped, summary.deactivated) == (False, 2)
+
+
+async def test_run_all_reports_a_partial_run_as_not_ok() -> None:
+    repository = FakeScraperListingRepository()
+    await repository.upsert(make_listing("1"), seen_at=NOW - timedelta(days=3))
+
+    @asynccontextmanager
+    async def scope() -> AsyncIterator[ScraperListingRepository]:
+        yield repository
+
+    assert await run_all([StaticSource(FetchResult())], scope, now=lambda: NOW) is False
+
+
 # Acceptance scenario from docs/specs/backend-foundation/spec.md, against the test database.
 
 

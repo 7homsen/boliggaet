@@ -1,3 +1,4 @@
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 
 import pytest
@@ -5,7 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models import Listing, ListingStatus, ListingType
-from app.repositories.listings import SqlListingRepository
+from app.repositories.listings import ListingRejectedError, SqlListingRepository
 from tests.fakes import make_listing
 
 NOW = datetime(2026, 11, 2, 12, tzinfo=UTC)
@@ -32,6 +33,32 @@ async def test_upsert_inserts_then_updates_without_duplicates(
     assert len(rows) == 1
     assert rows[0].status is ListingStatus.SOLD
     assert rows[0].last_seen_at == NOW + timedelta(hours=1)
+
+
+async def test_rejected_upsert_keeps_earlier_listings_in_the_transaction(
+    repository: SqlListingRepository, db_session: AsyncSession
+) -> None:
+    await repository.upsert(make_listing("kept"), seen_at=NOW)
+    too_big = make_listing("too-big")
+    too_big = replace(too_big, stats=replace(too_big.stats, square_meters=40_000))
+
+    with pytest.raises(ListingRejectedError):
+        await repository.upsert(too_big, seen_at=NOW)
+    await repository.upsert(make_listing("after"), seen_at=NOW)
+    await repository.commit()
+
+    ids = set((await db_session.execute(select(Listing.source_listing_id))).scalars())
+    assert ids == {"kept", "after"}
+
+
+async def test_count_listed_counts_the_sources_unsold_listings(
+    repository: SqlListingRepository,
+) -> None:
+    for status in ListingStatus:
+        await repository.upsert(make_listing(status.value, status=status), seen_at=NOW)
+    await repository.upsert(make_listing("other", source="other"), seen_at=NOW)
+
+    assert await repository.count_listed("test") == 2
 
 
 async def test_same_listing_id_from_different_sources_are_separate(

@@ -6,6 +6,7 @@ from typing import Protocol
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import Boolean, cast, func, literal_column, select, update
 from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models import EnergyRating, Listing, ListingStatus, ListingType
@@ -54,6 +55,10 @@ class GameListing:
     price: int
 
 
+class ListingRejectedError(Exception):
+    """The database refused to store a listing; the rest of the run can carry on."""
+
+
 class GameListingRepository(Protocol):
     async def pick_random_active(self, count: int) -> list[GameListing]:
         """Return up to `count` different random active listings that have at least one image."""
@@ -62,7 +67,15 @@ class GameListingRepository(Protocol):
 
 class ScraperListingRepository(Protocol):
     async def upsert(self, listing: NormalisedListing, seen_at: datetime) -> bool:
-        """Insert or update a listing on (source, source_listing_id). Return True if it was new."""
+        """Insert or update a listing on (source, source_listing_id). Return True if it was new.
+
+        Raises ListingRejectedError if the database refuses the listing; listings stored
+        earlier in the same transaction are kept.
+        """
+        ...
+
+    async def count_listed(self, source: str) -> int:
+        """Count the source's listings that are still listed (not sold or removed)."""
         ...
 
     async def mark_removed_not_seen_since(self, source: str, cutoff: datetime) -> int:
@@ -122,8 +135,24 @@ class SqlListingRepository:
             # xmax is 0 only for a freshly inserted row version.
             literal_column("xmax = 0", Boolean)
         )
-        inserted = (await self._session.execute(statement)).scalar_one()
+        try:
+            # A savepoint, so a rejected listing doesn't roll back the rest of the run.
+            async with self._session.begin_nested():
+                inserted = (await self._session.execute(statement)).scalar_one()
+        except DBAPIError as error:
+            if error.connection_invalidated:
+                raise
+            raise ListingRejectedError(str(error.orig)) from error
         return bool(inserted)
+
+    async def count_listed(self, source: str) -> int:
+        statement = (
+            select(func.count())
+            .select_from(Listing)
+            .where(Listing.source == source)
+            .where(Listing.status.not_in([ListingStatus.SOLD, ListingStatus.REMOVED]))
+        )
+        return (await self._session.execute(statement)).scalar_one()
 
     async def mark_removed_not_seen_since(self, source: str, cutoff: datetime) -> int:
         statement = (

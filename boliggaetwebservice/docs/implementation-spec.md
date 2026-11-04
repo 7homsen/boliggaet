@@ -34,6 +34,8 @@ PostgreSQL with PostGIS, managed with Alembic migrations.
 ## Scraping sources and schedule
 
 - The runner (`uv run python -m scraper`) runs every enabled source once. For each source it upserts the listings on (`source`, `source_listing_id`) with the status the source reports, marks the source's listings not seen for more than 2 days as `removed` (unless already `sold`), and logs how many were new, updated, deactivated and failed. A source that crashes is logged and skipped, and the run exits with a non-zero code.
+- Before storing, each listing is checked: its location must be in Denmark, its price above 0 and its stats within range. A listing that fails the check, or that the database refuses, is counted as failed and skipped; the rest of the source's listings are still stored.
+- If a run stores fewer than half of the source's listings that are currently listed (not `sold` or `removed`), it looks partial: nothing is marked `removed`, a warning is logged and the run exits with a non-zero code.
 - Property types: villa, rækkehus, landejendom and fritidshus are houses; ejerlejlighed and andelsbolig are apartments; everything else is skipped.
 - Sources use a shared HTTP client with a `User-Agent`, a rate limit (1 request per second by default) and retries with exponential backoff.
 - **`sample`**: loads listings from a JSON file in the repository, for development and tests only. Off unless `SAMPLE_SOURCE_ENABLED` is set.
